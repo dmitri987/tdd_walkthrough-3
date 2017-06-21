@@ -1,9 +1,13 @@
+package test;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 import java.math.BigDecimal;
 
-import static org.junit.Assert.assertEquals;
+import main.Calculator;
 
 /**
  * Created by matthewtodd on 30/03/2016.
