@@ -1,6 +1,7 @@
 package main;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,6 +18,7 @@ public class Calculator {
     }
     
     private void initOperations(){
+    	operations = new HashMap<>();
     	operations.put("+", new AddOperation());
     	operations.put("-", new SubtractOperation());
     	operations.put("*", new MultiplicationOperation());
@@ -46,19 +48,11 @@ public class Calculator {
     }
 
     public void execute(String op) {
-        Operation operation = null;
-        if ("+".equals(op))
-            operation = new AddOperation();
-        else if ("-".equals(op))
-            operation = new SubtractOperation();
-        else if ("*".equals(op))
-        	operation = new MultiplicationOperation();
-        else if ("/".equals(op))
-        	operation = new DivisionOperation();
-        else if ("^".equals(op))
-        	operation = new PowerOperation();
-        
-        operation.apply(values);
-        
+        Operation operation = operations.get(op);        
+        operation.apply(values);        
     }
+
+	public void registerOperation(String symbol, Operation operation) {
+		operations.put(symbol, operation);		
+	}
 }
